@@ -1,7 +1,6 @@
 ## Invariants
 
 - Keep this package dependency-light. Do not add runtime dependencies unless strictly necessary.
-- `extensions/handoff.ts` must remain functionally identical to the original extension unless explicitly requested.
 
 ## Required validation
 
