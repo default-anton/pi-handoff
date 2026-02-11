@@ -1,0 +1,41 @@
+{
+  "name": "pi-handoff",
+  "version": "1.0.0",
+  "description": "Handoff command extension package for pi coding agent",
+  "type": "module",
+  "keywords": [
+    "pi-package",
+    "pi-extension",
+    "handoff",
+    "session"
+  ],
+  "license": "Apache-2.0",
+  "author": "Anton Kuzmenko",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/default-anton/pi-handoff.git"
+  },
+  "bugs": {
+    "url": "https://github.com/default-anton/pi-handoff/issues"
+  },
+  "homepage": "https://github.com/default-anton/pi-handoff#readme",
+  "pi": {
+    "extensions": [
+      "./extensions/handoff.ts"
+    ]
+  },
+  "scripts": {
+    "pack:check": "npm pack --dry-run"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@mariozechner/pi-coding-agent": "*"
+  },
+  "files": [
+    "extensions/",
+    "README.md",
+    "LICENSE"
+  ]
+}
