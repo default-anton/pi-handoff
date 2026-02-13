@@ -23,6 +23,20 @@ All notable changes to `pi-handoff` are documented here.
 
 - None.
 
+## [1.1.1] - 2026-02-13
+
+### Added
+
+- None.
+
+### Changed
+
+- Updated peer dependency `@mariozechner/pi-coding-agent` to `^0.52.12`.
+
+### Fixed
+
+- None.
+
 ## [1.1.0] - 2026-02-13
 
 ### Added

@@ -1,6 +1,6 @@
 {
   "name": "pi-handoff",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Handoff command extension package for pi coding agent",
   "type": "module",
   "keywords": [
@@ -34,7 +34,7 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@mariozechner/pi-coding-agent": "*"
+    "@mariozechner/pi-coding-agent": "^0.52.12"
   },
   "files": [
     "extensions/",
