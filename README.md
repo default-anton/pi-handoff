@@ -29,7 +29,7 @@ pi -e git:github.com/default-anton/pi-handoff
 - Registers a `/handoff` command.
 - Generates a concise handoff note from current session context.
 - Creates a new session linked to the current session.
-- Prefills the new session editor with handoff context plus task.
+- Sends handoff context plus task into the new session immediately.
 
 ## Command usage
 

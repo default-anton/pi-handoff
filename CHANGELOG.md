@@ -23,6 +23,20 @@ All notable changes to `pi-handoff` are documented here.
 
 - None.
 
+## [1.1.0] - 2026-02-13
+
+### Added
+
+- None.
+
+### Changed
+
+- `/handoff` now sends the generated handoff note and task to the new session immediately instead of pre-filling the editor for manual submission.
+
+### Fixed
+
+- None.
+
 ## [1.0.1] - 2026-02-12
 
 ### Added

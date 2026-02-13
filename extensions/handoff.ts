@@ -114,14 +114,13 @@ export default function(pi: ExtensionAPI) {
 
       const promptForNewSession = `${handoffNote}\n\n---\n\n## Task\n${task}`;
 
-      if (ctx.ui?.setEditorText) {
-        ctx.ui.setEditorText(promptForNewSession);
-        notify("Handoff ready in new session. Submit when ready.", "info");
-      } else if (ctx.isIdle()) {
+      if (ctx.isIdle()) {
         pi.sendUserMessage(promptForNewSession);
       } else {
         pi.sendUserMessage(promptForNewSession, { deliverAs: "followUp" });
       }
+
+      notify("Handoff sent to the new session.", "info");
     },
   });
 }
