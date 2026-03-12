@@ -9,7 +9,7 @@
 
 import type { ExtensionAPI, ExtensionCommandContext, SessionEntry } from "@mariozechner/pi-coding-agent";
 
-const HANDOFF_TIMEOUT_MS = 30000;
+const HANDOFF_TIMEOUT_MS = 5 * 60 * 1000;
 const HANDOFF_POLL_INTERVAL_MS = 25;
 
 const HANDOFF_INSTRUCTIONS = `You are writing a handoff note for another AI agent with NO access to this chat.

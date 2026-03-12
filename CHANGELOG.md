@@ -23,6 +23,20 @@ All notable changes to `pi-handoff` are documented here.
 
 - None.
 
+## [1.1.4] - 2026-03-12
+
+### Added
+
+- None.
+
+### Changed
+
+- Increased `/handoff` wait timeout from 30 seconds to 5 minutes before reporting a timeout while generating the handoff note.
+
+### Fixed
+
+- None.
+
 ## [1.1.3] - 2026-03-04
 
 ### Added
