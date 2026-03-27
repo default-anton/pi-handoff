@@ -23,6 +23,20 @@ All notable changes to `pi-handoff` are documented here.
 
 - None.
 
+## [1.1.5] - 2026-03-27
+
+### Added
+
+- None.
+
+### Changed
+
+- Updated peer dependency `@mariozechner/pi-coding-agent` to `^0.63.1` for pi 0.63.x compatibility.
+
+### Fixed
+
+- Tightened session message parsing so `/handoff` stays compatible with pi 0.63.x message typings.
+
 ## [1.1.4] - 2026-03-12
 
 ### Added

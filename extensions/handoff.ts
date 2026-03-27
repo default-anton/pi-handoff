@@ -9,6 +9,20 @@
 
 import type { ExtensionAPI, ExtensionCommandContext, SessionEntry } from "@mariozechner/pi-coding-agent";
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null;
+}
+
+type RoleMessage = {
+  role: "user" | "assistant";
+  content: unknown;
+};
+
+type AssistantRoleMessage = RoleMessage & {
+  role: "assistant";
+  stopReason?: unknown;
+};
+
 const HANDOFF_TIMEOUT_MS = 5 * 60 * 1000;
 const HANDOFF_POLL_INTERVAL_MS = 25;
 
@@ -32,21 +46,30 @@ Output:
 - Markdown only.
 - Handoff context only (do not restate the task).`;
 
-function getRoleMessage(entry: SessionEntry, role: "user" | "assistant") {
-  if (entry.type !== "message") {
+function getRoleMessage(entry: SessionEntry, role: "user" | "assistant"): RoleMessage | null {
+  if (entry.type !== "message" || !isRecord(entry.message)) {
     return null;
   }
 
   const message = entry.message;
-  if (!message || !("role" in message) || message.role !== role) {
+  if (message.role !== role || !("content" in message)) {
     return null;
   }
 
-  return message;
+  return message as RoleMessage;
+}
+
+function getAssistantMessage(entry: SessionEntry): AssistantRoleMessage | null {
+  const message = getRoleMessage(entry, "assistant");
+  if (!message || !isRecord(message)) {
+    return null;
+  }
+
+  return message as AssistantRoleMessage;
 }
 
 function getMessageText(entry: SessionEntry): string {
-  if (entry.type !== "message" || !entry.message) {
+  if (entry.type !== "message" || !isRecord(entry.message) || !("content" in entry.message)) {
     return "";
   }
 
@@ -60,7 +83,7 @@ function getMessageText(entry: SessionEntry): string {
   }
 
   return content
-    .filter((block): block is { type: "text"; text: string } => block.type === "text")
+    .filter((block): block is { type: "text"; text: string } => isRecord(block) && block.type === "text" && typeof block.text === "string")
     .map((block) => block.text)
     .join("\n")
     .trim();
@@ -125,7 +148,7 @@ async function waitForHandoffTurn(
 function getAssistantText(entries: SessionEntry[], fromIndex: number): string | null {
   for (let i = entries.length - 1; i >= fromIndex; i--) {
     const entry = entries[i];
-    const message = getRoleMessage(entry, "assistant");
+    const message = getAssistantMessage(entry);
     if (!message) {
       continue;
     }
