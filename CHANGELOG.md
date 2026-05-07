@@ -23,6 +23,20 @@ All notable changes to `pi-handoff` are documented here.
 
 - None.
 
+## [1.1.9] - 2026-05-07
+
+### Added
+
+- None.
+
+### Changed
+
+- Switched the pi coding-agent peer import and dependency to the `@earendil-works` scope at `^0.74.0`.
+
+### Fixed
+
+- None.
+
 ## [1.1.8] - 2026-04-22
 
 ### Added
